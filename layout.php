@@ -1,0 +1,61 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="stilim.css">
+</head>
+<body>
+
+<header>
+    Internet Based Programming
+</header>
+<section>
+    <nav>
+        <ol>
+            <li><a href="layout.html">Mainpage</a></li>
+            <li><a href="form.html">Form Page</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ol>
+
+        <?php
+        if(isset($_SESSION['sign'])){
+            echo "Hi ". $_SESSION['sign'] . "<br>";
+            echo "<a style='color: red' href='logout.php'>log out </a>";
+        }
+        else{
+        ?>
+
+        <form class="signin" method="post" action="check.php">
+            <label>
+                <input type="text" placeholder="Username" name="username">
+            </label>
+            <label>
+                <input type="password" placeholder="Password" name="psw">
+            </label> <br>
+            <button type="submit">log in</button>
+        </form>
+        <?php } ?>
+
+    </nav>
+    <article>
+        <?php
+        if(isset($_SESSION['sign'])){ ?>
+        This is content. <br>
+
+        <div class="box1">Box 1</div>
+        <div class="box2">Box 2</div>
+        <?php
+         }
+        else{
+            echo "sign in pleas";
+        }
+        ?>
+    </article>
+</section>
+<footer>
+    This is footer.
+</footer>
+</body>
+</html>
